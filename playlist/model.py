@@ -1,7 +1,7 @@
 import numpy as np
 from data import DatasetMode, load
 from keras.callbacks import EarlyStopping
-from keras.layers import Dense, GRU, Embedding
+from keras.layers import Dense, GRU, Embedding, SpatialDropout1D
 from keras.models import Sequential
 from keras.optimizers import Adam
 from keras.preprocessing import sequence
@@ -42,7 +42,8 @@ class PlaylistGeneration:
         self.y_test = to_categorical(y_test, len(self.song_hash) + 1)  # Zero is included
 
     def process(self):
-        self.model.add(Embedding(len(self.song_hash) + 1, 50, dropout=0.25, mask_zero=True))
+        self.model.add(Embedding(len(self.song_hash) + 1, 50, mask_zero=True))
+        self.model.add(SpatialDropout1D(rate=0.20))
         self.model.add(GRU(128))
         self.model.add(Dense(len(self.song_hash) + 1, activation=self.activation))
 
@@ -50,7 +51,7 @@ class PlaylistGeneration:
                            loss=self.loss,
                            metrics=self.metrics)
 
-        self.model.fit(self.x_train, self.y_train, nb_epoch=100, batch_size=512, validation_split=0.1,
+        self.model.fit(self.x_train, self.y_train, epochs=100, batch_size=512, validation_split=0.1,
                        callbacks=self.callbacks)
 
         return self
