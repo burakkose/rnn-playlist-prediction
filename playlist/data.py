@@ -1,6 +1,7 @@
 import numpy as np
 import os
 from keras.utils.data_utils import get_file
+from sklearn.utils import shuffle
 
 
 class DatasetMode:
@@ -38,7 +39,7 @@ def data_augmentation(dataset, future=False):
         for idx in range(0, len(row) - 1):
             x.append([e + 1 for e in row[0:idx + 1]])
             y.append(row[idx + 1])
-    return x, y
+    return shuffle(x, y)
 
 
 def read_song_hash(path):
@@ -48,7 +49,7 @@ def read_song_hash(path):
 
 
 def read_dataset(train_path, test_path):
-    return prepare_data(readlines(train_path)), \
+    return prepare_data(readlines(train_path), with_augmentation=True), \
            prepare_data(readlines(test_path))
 
 
