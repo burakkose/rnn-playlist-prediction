@@ -1,5 +1,6 @@
 import numpy as np
 from data import DatasetMode, load
+from keras.callbacks import EarlyStopping
 from keras.layers import Dense, GRU, Embedding
 from keras.models import Sequential
 from keras.optimizers import Adam
@@ -16,6 +17,9 @@ class PlaylistGeneration:
         self.activation = 'softmax'
         self.loss = 'categorical_crossentropy'
         self.metrics = top_k_accuracy_func_list([50, 100, 200, 300, 400, 500])
+
+        early_stopping = EarlyStopping(monitor='val_loss', patience=3)
+        self.callbacks = [early_stopping]
 
         '''
         Index of songs in x_train(or test) starts from 1 because of zero padding.
@@ -46,12 +50,13 @@ class PlaylistGeneration:
                            loss=self.loss,
                            metrics=self.metrics)
 
-        self.model.fit(self.x_train, self.y_train, nb_epoch=10, batch_size=10000)
+        self.model.fit(self.x_train, self.y_train, nb_epoch=100, batch_size=512, validation_split=0.1,
+                       callbacks=self.callbacks)
 
         return self
 
     def evaluate(self):
-        scores = self.model.evaluate(self.x_test, self.y_test)[1:]
+        scores = self.model.evaluate(self.x_test, self.y_test, batch_size=512)[1:]
 
         report = ""
         for metrics_name, score in zip(self.model.metrics_names[1:], scores):
