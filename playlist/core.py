@@ -1,4 +1,4 @@
-from playlist.models.simple_gru import SimpleGRU
+from playlist.models.model_generator import ModelGenerator, ModelName
 
 if __name__ == '__main__':
-    SimpleGRU().process().evaluate()
+    ModelGenerator(model_name=ModelName.bi_directional_lstm).process().evaluate()
