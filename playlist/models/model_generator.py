@@ -11,6 +11,7 @@ from keras.models import Model
 from playlist.config import *
 from playlist.tools.data import DatasetMode, load
 from playlist.tools.metrics import top_k_accuracy_func_list
+from playlist.models.attention import Attention
 
 
 class ModelName:
@@ -94,23 +95,14 @@ class ModelGenerator:
         return model
 
     def create_ablstm_model(self):
-        inp = Input(shape=(len(self.song_hash) + 1,))
-        emb = Embedding(len(self.song_hash) + 1, 50, mask_zero=True)(inp)
-
-        bi = Bidirectional(LSTM(128, dropout=0.2, recurrent_dropout=0.1))(emb)
-
-        attention = dot([bi], [1])
-        attention = Flatten()(attention)
-        attention = Dense(self.max_length * 128, activation='sigmoid')(attention)
-        attention = Reshape((self.max_length, 128))(attention)
-
-        merged = add([bi, attention])
-        merged = Flatten()(merged)
-        merged = Dense(50, activation='relu')(merged)
-        merged = Dropout(0.2)(merged)
-        merged = Dense(len(self.song_hash) + 1, activation=self.activation)(merged)
-
-        model = Model(inputs=inp, outputs=merged)
+        model = Sequential()
+        model.add(Embedding(len(self.song_hash) + 1, 50, mask_zero=True))
+        model.add(SpatialDropout1D(rate=0.20))
+        model.add(Bidirectional(LSTM(128, dropout=0.2, recurrent_dropout=0.1, return_sequences=True)))
+        model.add(Attention(bias=False))
+        model.add(Dense(60, activation='relu'))
+        model.add(Dropout(0.2))
+        model.add(Dense(len(self.song_hash) + 1, activation=self.activation))
         model.compile(optimizer=self.optimizer, loss=self.loss, metrics=self.metrics)
         return model
 

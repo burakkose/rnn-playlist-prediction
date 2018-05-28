@@ -7,3 +7,4 @@ Playlist prediction playground with Keras and Cornell Playlist Dataset
 |------------|--------|--------|--------|--------|--------|--------|---------|
 | BiLSTM     | 30.16% | 43.52% | 60.52% | 71.56% | 78.38% | 82.85% | [Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/bi-lstm.ipynb)        |
 | SimpleGRU  |29.64%  | 42.83% | 59.58% | 70.79% | 77.60% | 82.07% | [Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/simple-gru.ipynb)|
+| LSTM_with_Attention  |31.42%  | 44.32% | 60.75% | 71.85% | 78.36% | 82.65% | [Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/bi-lstm-with-attention.ipynb)|
