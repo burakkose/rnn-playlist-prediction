@@ -1,18 +1,17 @@
 import numpy as np
-from data import DatasetMode, load
+from playlist.tools.data import DatasetMode, load
 from keras.callbacks import EarlyStopping
 from keras.layers import Dense, GRU, Embedding, SpatialDropout1D
 from keras.models import Sequential
 from keras.optimizers import Adam
 from keras.preprocessing import sequence
 from keras.utils.np_utils import to_categorical
-from metrics import top_k_accuracy_func_list
+from playlist.tools.metrics import top_k_accuracy_func_list
 
 
-class PlaylistGeneration:
+class SimpleGRU:
     def __init__(self, mode=DatasetMode.small):
-        self.optimizer = \
-            Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
+        self.optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
         self.model = Sequential()
         self.activation = 'softmax'
         self.loss = 'categorical_crossentropy'

@@ -1,6 +1,4 @@
-from model import PlaylistGeneration
+from playlist.models.simple_gru import SimpleGRU
 
 if __name__ == '__main__':
-    PlaylistGeneration() \
-        .process() \
-        .evaluate()
+    SimpleGRU().process().evaluate()
