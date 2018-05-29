@@ -67,7 +67,7 @@ class ModelGenerator:
     def process(self):
         self.model.fit(self.x_train,
                        self.y_train,
-                       epochs=200,
+                       epochs=50,
                        batch_size=512,
                        validation_split=0.1,
                        callbacks=self.callbacks)
