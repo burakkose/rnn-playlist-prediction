@@ -1,4 +1,3 @@
-import numpy as np
 from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
 from keras.layers import *
 from keras.models import Sequential
@@ -7,17 +6,10 @@ from keras.preprocessing import sequence
 from keras.utils.np_utils import to_categorical
 from livelossplot import PlotLossesKeras
 
-from keras.models import Model
 from playlist.config import *
+from playlist.models.attention import Attention
 from playlist.tools.data import DatasetMode, load
 from playlist.tools.metrics import top_k_accuracy_func_list
-from playlist.models.attention import Attention
-
-
-class ModelName:
-    simple_gru = 's_gru'
-    bi_directional_lstm = 'bi_lstm'
-    attention_bilstm = 'ablstm_model'
 
 
 class ModelGenerator:

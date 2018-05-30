@@ -1,7 +1,7 @@
 # rnn-playlist-prediction
 Playlist prediction with recurrent neural networks on [Cornell Playlist Data Set](https://www.cs.cornell.edu/~shuochen/lme/data_page.html)
 
-## Results
+## Experiments with Categorical cross-entropy outputs
 ### On Small Data Set
 
 | Model Name | func   | func_1 | func_2 | func_3 | func_4 | func_5 | Details |
@@ -18,3 +18,9 @@ Playlist prediction with recurrent neural networks on [Cornell Playlist Data Set
 | Model Name | func   | func_1 | func_2 | func_3 | func_4 | func_5 | Details |
 |------------|--------|--------|--------|--------|--------|--------|---------|
 | LSTM_with_Attention  |20.74%  | 29.83% | 41.46% | 49.85% | 56.38% | 61.69% | [Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/bi-lstm-with-attention.ipynb)|
+
+## Experiments with Word2Vec embeddings as inputs and outputs
+
+| Model Name | mae   | mse | acc | mape | cosine_proximity | Details |
+|------------|--------|--------|--------|--------|--------|---------|
+| SimpleGRU  |0.67  | 0.93 | 0.19 | 31.89 | -0.40  |[Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/simple_gru_with_embedding.ipynb)|
