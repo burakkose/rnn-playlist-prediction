@@ -24,3 +24,4 @@ Playlist prediction with recurrent neural networks on [Cornell Playlist Data Set
 | Model Name | mae   | mse | acc | mape | cosine_proximity | Details |
 |------------|--------|--------|--------|--------|--------|---------|
 | SimpleGRU  |0.67  | 0.93 | 0.19 | 31.89 | -0.40  |[Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/simple_gru_with_embedding.ipynb)|
+| BiLSTM  |0.66  | 0.87 | 0.16 | 243.73 | -0.41  |[Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/bilstm_with_embedding.ipynb)|

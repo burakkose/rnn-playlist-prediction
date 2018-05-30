@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0667ffb-d632-4feb-9b7d-7cc790d696b1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/playlist/models/embedding_model_generator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playlist/models/embeddings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/playlist/models/model_modes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple_gru_with_embedding.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bi-lstm-with-attention.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bi-lstm-with-attention.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bi-lstm.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bi-lstm.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playlist/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/playlist/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playlist/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/playlist/core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playlist/models/model_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/playlist/models/categorical_model_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-gru.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/simple-gru.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +20,7 @@
       <file leaf-file-name="categorical_model_generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/playlist/models/categorical_model_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="171">
               <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#71#0" expanded="true" />
@@ -45,8 +33,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="475">
-                <caret line="25" column="161" selection-start-line="25" selection-start-column="161" selection-end-line="25" selection-end-column="161" />
+              <first_editor relative-caret-position="494">
+                <caret line="26" column="157" selection-start-line="26" selection-start-column="157" selection-end-line="26" selection-end-column="157" />
               </first_editor>
               <second_editor />
             </state>
@@ -56,20 +44,11 @@
       <file leaf-file-name="embedding_model_generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/playlist/models/embedding_model_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+            <state relative-caret-position="228">
+              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
               <folding>
                 <element signature="e#0#71#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model_modes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/playlist/models/model_modes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -89,8 +68,8 @@
       <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/playlist/tools/data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+            <state relative-caret-position="851">
+              <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -301,7 +280,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="29" width="1920" height="1051" extended-state="6" />
+    <frame x="0" y="29" width="1920" height="1051" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -320,13 +299,29 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25772098" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.5165069" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32998884" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" x="0" y="0" width="430" height="851" id="Documentation" order="5" side_tool="true" weight="0.32960597" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,6 +388,101 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/playlist/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playlist/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attention_bilstm_with_embedding.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simple-gru.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bi-lstm.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bi-lstm-with-attention.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playlist/models/categorical_model_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playlist/models/model_modes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playlist/tools/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playlist/models/embedding_model_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1136">
+          <caret line="148" column="45" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="513">
+            <caret line="27" selection-start-line="27" selection-end-line="27" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/playlist/models/categorical_model_generator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -428,7 +518,7 @@
         <state relative-caret-position="57">
           <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
           <folding>
-            <element signature="e#0#58#0" expanded="true" />
+            <element signature="e#0#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -478,7 +568,7 @@
         <state relative-caret-position="57">
           <caret line="4" column="105" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="105" />
           <folding>
-            <element signature="e#0#58#0" expanded="true" />
+            <element signature="e#0#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -624,8 +714,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/playlist/tools/data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        <state relative-caret-position="851">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -675,7 +765,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/playlist/models/categorical_model_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="171">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#0#71#0" expanded="true" />
@@ -699,8 +789,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/playlist/models/embedding_model_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        <state relative-caret-position="228">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
           <folding>
             <element signature="e#0#71#0" expanded="true" />
           </folding>
@@ -710,8 +800,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="475">
-            <caret line="25" column="161" selection-start-line="25" selection-start-column="161" selection-end-line="25" selection-end-column="161" />
+          <first_editor relative-caret-position="494">
+            <caret line="26" column="157" selection-start-line="26" selection-start-column="157" selection-end-line="26" selection-end-column="157" />
           </first_editor>
           <second_editor />
         </state>
