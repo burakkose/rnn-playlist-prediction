@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0667ffb-d632-4feb-9b7d-7cc790d696b1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playlist/models/categorical_model_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/playlist/models/categorical_model_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playlist/models/embedding_model_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/playlist/models/embedding_model_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-gru.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/simple-gru.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bi-lstm.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bi-lstm.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,8 +34,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="361">
-                <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+              <first_editor relative-caret-position="475">
+                <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               </first_editor>
               <second_editor />
             </state>
@@ -66,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/playlist/core.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
-              <caret line="5" column="50" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="50" />
+              <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
               <folding>
                 <element signature="e#0#77#0" expanded="true" />
               </folding>
@@ -77,8 +74,8 @@
       <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/playlist/tools/data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1178">
-              <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+            <state relative-caret-position="114">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -685,16 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/playlist/tools/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1178">
-          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/playlist/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -743,16 +730,6 @@
     <entry file="file://$PROJECT_DIR$/playlist/models/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/playlist/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="50" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/playlist/models/embedding_model_generator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
@@ -783,11 +760,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/playlist/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playlist/tools/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="361">
-            <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+          <first_editor relative-caret-position="475">
+            <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
           </first_editor>
           <second_editor />
         </state>
