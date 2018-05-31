@@ -10,7 +10,7 @@ from playlist.config import *
 from playlist.models.attention import Attention
 from playlist.tools.data import DatasetMode, load
 from playlist.tools.metrics import top_k_accuracy_func_list
-
+from playlist.models.model_modes import ModelName
 
 class ModelGenerator:
     def __init__(self, mode=DatasetMode.small, model_name=ModelName.simple_gru):

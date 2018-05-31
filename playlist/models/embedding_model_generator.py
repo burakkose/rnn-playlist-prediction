@@ -71,7 +71,6 @@ class EmbeddingModelGenerator:
                             output_dim=self.embeddings_matrix.shape[1],
                             weights=[self.embeddings_matrix],
                             input_length=self.max_length,
-                            mask_zero=True,
                             trainable=False))
         model.add(SpatialDropout1D(rate=0.20))
         model.add(GRU(EMBEDDING_DIM))
@@ -86,7 +85,6 @@ class EmbeddingModelGenerator:
                             output_dim=self.embeddings_matrix.shape[1],
                             weights=[self.embeddings_matrix],
                             input_length=self.max_length,
-                            mask_zero=True,
                             trainable=False))
         model.add(SpatialDropout1D(rate=0.20))
         model.add(Bidirectional(LSTM(EMBEDDING_DIM, dropout=0.2, recurrent_dropout=0.1)))
@@ -101,7 +99,6 @@ class EmbeddingModelGenerator:
                             output_dim=self.embeddings_matrix.shape[1],
                             weights=[self.embeddings_matrix],
                             input_length=self.max_length,
-                            mask_zero=True,
                             trainable=False))
         model.add(Bidirectional(LSTM(EMBEDDING_DIM, dropout=0.2, recurrent_dropout=0.1, return_sequences=True)))
         model.add(Attention(bias=False))

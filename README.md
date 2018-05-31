@@ -12,15 +12,12 @@ Playlist prediction with recurrent neural networks on [Cornell Playlist Data Set
 
 
 ### On Big Data Set
-
-
-
 | Model Name | func   | func_1 | func_2 | func_3 | func_4 | func_5 | Details |
 |------------|--------|--------|--------|--------|--------|--------|---------|
+| SimpleGRU  |17.55%  | 26.16% | 37.59% | 45.82% | 52.10% | 57.11% | [Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/simple-gru.ipynb)|
 | LSTM_with_Attention  |20.74%  | 29.83% | 41.46% | 49.85% | 56.38% | 61.69% | [Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/bi-lstm-with-attention.ipynb)|
 
 ## Experiments with Word2Vec embeddings as inputs and outputs
-
 | Model Name | mae   | mse | acc | mape | cosine_proximity | Details |
 |------------|--------|--------|--------|--------|--------|---------|
 | SimpleGRU  |0.67  | 0.93 | 0.19 | 31.89 | -0.40  |[Notebook](https://github.com/cenkcorapci/rnn-playlist-prediction/blob/master/simple_gru_with_embedding.ipynb)|
