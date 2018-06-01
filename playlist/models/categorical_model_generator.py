@@ -1,3 +1,5 @@
+import random
+
 from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
 from keras.layers import *
 from keras.models import Sequential
@@ -8,9 +10,10 @@ from livelossplot import PlotLossesKeras
 
 from playlist.config import *
 from playlist.models.attention import Attention
+from playlist.models.model_modes import *
 from playlist.tools.data import DatasetMode, load
 from playlist.tools.metrics import top_k_accuracy_func_list
-from playlist.models.model_modes import ModelName
+
 
 class ModelGenerator:
     def __init__(self, mode=DatasetMode.small, model_name=ModelName.simple_gru):
@@ -18,6 +21,11 @@ class ModelGenerator:
         self.activation = 'softmax'
         self.loss = 'categorical_crossentropy'
         self.metrics = top_k_accuracy_func_list([50, 100, 200, 300, 400, 500])
+
+        self.epochs = 15
+        self.batch_size = 512
+        self.validation_split = 0.2
+        self.data_mode = mode
 
         '''
         Index of songs in x_train(or test) starts from 1 because of zero padding.
@@ -32,6 +40,12 @@ class ModelGenerator:
 
         self.max_length = max([len(playlist) for playlist in x_train])
         self.song_hash = songs
+
+        self.train_len = len(x_train)
+        self.test_len = len(x_test)
+
+        self.validation_x, self.validation_y = [], []
+        self.train_x, self.train_y = [], []
 
         if model_name is ModelName.simple_gru:
             self.weights_loc = TRAINED_MODELS_BASE_PATH + 'simple_gru_weights.best.hdf5'
@@ -49,22 +63,6 @@ class ModelGenerator:
             raise Exception("Unknown Model Name; ", model_name)
 
         self.callbacks = self._get_callback_functions()
-
-        self.x_train = np.asarray(sequence.pad_sequences(x_train, maxlen=self.max_length), dtype="int64")
-        self.y_train = to_categorical(y_train, len(self.song_hash) + 1)  # Zero is included
-
-        self.x_test = np.asarray(sequence.pad_sequences(x_test, maxlen=self.max_length), dtype="int64")
-        self.y_test = to_categorical(y_test, len(self.song_hash) + 1)  # Zero is included
-
-    def process(self):
-        self.model.fit(self.x_train,
-                       self.y_train,
-                       epochs=50,
-                       batch_size=512,
-                       validation_split=0.1,
-                       callbacks=self.callbacks)
-
-        return self
 
     def create_simple_gru_model(self):
         model = Sequential()
@@ -99,7 +97,8 @@ class ModelGenerator:
         return model
 
     def evaluate(self):
-        scores = self.model.evaluate(self.x_test, self.y_test, batch_size=512)[1:]
+        scores = self.model.evaluate_generator(generator=self._data_generator(mode=DataGeneratorMode.test),
+                                               steps=self.test_len / self.batch_size + 1)[1:]
 
         report = ""
         for metrics_name, score in zip(self.model.metrics_names[1:], scores):
@@ -126,3 +125,55 @@ class ModelGenerator:
                                      save_best_only=True,
                                      mode='min')
         return [early_stopping, plot_losses, tb_callback, checkpoint]
+
+    def process(self):
+        self.model.fit_generator(generator=self._data_generator(),
+                                 validation_data=self._data_generator(mode=DataGeneratorMode.validation),
+                                 validation_steps=len(self.validation_x) / self.batch_size + 1,
+                                 epochs=self.epochs,
+                                 verbose=1,
+                                 steps_per_epoch=self.train_len / self.batch_size + 1,
+                                 callbacks=self.callbacks)
+        return self
+
+    def _data_generator(self, mode=DataGeneratorMode.training):
+        def gen_training_data():
+            (x_train, y_train), (_, _), _ = load(self.data_mode)
+            z = list(zip(x_train, y_train))
+            random.shuffle(z)
+            pos = int(len(x_train) * self.validation_split)
+            z_tr = z[pos:]
+            z_val = z[:pos]
+            self.validation_x, self.validation_y = zip(*z_val)
+            self.train_x, self.train_y = zip(*z_tr)
+
+            return x_train, y_train
+
+        inputs, outputs = [], []
+
+        if mode == DataGeneratorMode.training:
+            inputs, outputs = gen_training_data()
+        elif mode == DataGeneratorMode.validation:
+            if len(self.validation_x) == 0:
+                inputs, outputs = gen_training_data()
+            else:
+                inputs, outputs = self.validation_x, self.validation_y
+        else:
+            (_, _), (x_test, y_test), _ = load(self.data_mode)
+            inputs, outputs = x_test, y_test
+
+        index = 0
+        last_batch_x, last_batch_y = [], []
+
+        while True:
+            try:
+                inp = inputs[index:index + self.batch_size]
+                out = outputs[index:index + self.batch_size]
+
+                last_batch_x = np.asarray(sequence.pad_sequences(inp, maxlen=self.max_length), dtype="int64")
+                last_batch_y = to_categorical(out, len(self.song_hash) + 1)  # Zero is included
+                index += 1
+            except Exception as exp:
+                logging.error('Data generator error', exp)
+
+            yield last_batch_x, last_batch_y

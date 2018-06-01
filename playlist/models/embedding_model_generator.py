@@ -1,3 +1,5 @@
+import random
+
 from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
 from keras.layers import *
 from keras.models import Sequential
@@ -8,11 +10,8 @@ from livelossplot import PlotLossesKeras
 from playlist.config import *
 from playlist.models.attention import Attention
 from playlist.models.embeddings import SongEmbeddings
-from playlist.tools.data import DatasetMode, load
-
 from playlist.models.model_modes import *
-
-import random
+from playlist.tools.data import DatasetMode, load
 
 
 class EmbeddingModelGenerator:
@@ -24,6 +23,7 @@ class EmbeddingModelGenerator:
         self.epochs = 50
         self.batch_size = 512
         self.validation_split = 0.2
+
         self.data_mode = mode
         v_index, embedding_matrix = SongEmbeddings().get_embeddings_matrix()
         self.embeddings_matrix = embedding_matrix
