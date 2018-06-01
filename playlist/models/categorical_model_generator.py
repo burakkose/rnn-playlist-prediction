@@ -1,5 +1,3 @@
-import random
-
 from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
 from keras.layers import *
 from keras.models import Sequential
@@ -24,7 +22,7 @@ class ModelGenerator:
 
         self.epochs = 15
         self.batch_size = 512
-        self.validation_split = 0.2
+        self.validation_split = 0.1
         self.data_mode = mode
 
         '''
@@ -140,7 +138,6 @@ class ModelGenerator:
         def gen_training_data():
             (x_train, y_train), (_, _), _ = load(self.data_mode)
             z = list(zip(x_train, y_train))
-            random.shuffle(z)
             pos = int(len(x_train) * self.validation_split)
             z_tr = z[pos:]
             z_val = z[:pos]
@@ -151,9 +148,7 @@ class ModelGenerator:
 
         inputs, outputs = [], []
 
-        if mode == DataGeneratorMode.training:
-            inputs, outputs = gen_training_data()
-        elif mode == DataGeneratorMode.validation:
+        if mode == DataGeneratorMode.training or mode == DataGeneratorMode.validation:
             if len(self.validation_x) == 0:
                 inputs, outputs = gen_training_data()
             else:
@@ -172,8 +167,10 @@ class ModelGenerator:
 
                 last_batch_x = np.asarray(sequence.pad_sequences(inp, maxlen=self.max_length), dtype="int64")
                 last_batch_y = to_categorical(out, len(self.song_hash) + 1)  # Zero is included
-                index += 1
+                index += self.batch_size
+            except IndexError:
+                index = 0
             except Exception as exp:
                 logging.error('Data generator error', exp)
-
+                index = 0
             yield last_batch_x, last_batch_y

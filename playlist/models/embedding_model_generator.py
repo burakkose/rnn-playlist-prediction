@@ -1,9 +1,7 @@
-import random
-
 from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
 from keras.layers import *
 from keras.models import Sequential
-from keras.optimizers import Adam
+from keras.optimizers import RMSprop
 from keras.preprocessing.sequence import pad_sequences
 from livelossplot import PlotLossesKeras
 
@@ -16,13 +14,13 @@ from playlist.tools.data import DatasetMode, load
 
 class EmbeddingModelGenerator:
     def __init__(self, mode=DatasetMode.small, model_name=ModelName.simple_gru):
-        self.optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-        self.activation = 'sigmoid'
-        self.loss = 'cosine_proximity'
-        self.metrics = ['mae', 'mse', 'acc', 'mape', 'cosine']
+        self.optimizer = RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
+        self.activation = 'tanh'
+        self.loss = 'cosine'
+        self.metrics = ['mae', 'mse', 'acc', 'mape', 'cosine', 'categorical_crossentropy']
         self.epochs = 50
         self.batch_size = 512
-        self.validation_split = 0.2
+        self.validation_split = 0.1
 
         self.data_mode = mode
         v_index, embedding_matrix = SongEmbeddings().get_embeddings_matrix()
@@ -145,7 +143,6 @@ class EmbeddingModelGenerator:
         def gen_training_data():
             (x_train, y_train), (_, _), _ = load(self.data_mode)
             z = list(zip(x_train, y_train))
-            random.shuffle(z)
             pos = int(len(x_train) * self.validation_split)
             z_tr = z[pos:]
             z_val = z[:pos]
@@ -156,9 +153,7 @@ class EmbeddingModelGenerator:
 
         inputs, outputs = [], []
 
-        if mode == DataGeneratorMode.training:
-            inputs, outputs = gen_training_data()
-        elif mode == DataGeneratorMode.validation:
+        if mode == DataGeneratorMode.training or mode == DataGeneratorMode.validation:
             if len(self.validation_x) == 0:
                 inputs, outputs = gen_training_data()
             else:
@@ -169,21 +164,31 @@ class EmbeddingModelGenerator:
 
         index = 0
         last_batch_x, last_batch_y = [], []
-
         while True:
-            try:
-                vectorized_inp = []
-                vectorized_out = []
-                for b in range(self.batch_size):
-                    playlist = inputs[index + b]
-                    vectorized_inp.append([self.vocab_index[str(song)] for song in playlist])
-                    vectorized_out.append(self.embeddings_matrix[self.vocab_index[str(outputs[index + b])]])
+            def get_batch(i):
+                try:
+                    vectorized_inp = []
+                    vectorized_out = []
+                    for b in range(self.batch_size):
+                        playlist = inputs[i + b]
+                        vectorized_inp.append([self.vocab_index[str(song)] for song in playlist])
+                        vectorized_out.append(self.embeddings_matrix[self.vocab_index[str(outputs[i + b])]])
 
-                last_batch_x = np.asarray(
-                    pad_sequences(vectorized_inp, maxlen=self.max_length))
-                last_batch_y = np.asarray(vectorized_out)
-                index += 1
+                    x = np.asarray(
+                        pad_sequences(vectorized_inp, maxlen=self.max_length))
+                    y = np.asarray(vectorized_out)
+                    return x, y, i
+                except KeyError as key_error:
+                    # logging.warning('Can\'t find key', key_error)
+                    return get_batch(i + self.batch_size)
+
+            try:
+                last_batch_x, last_batch_y, index = get_batch(index)
+                index += self.batch_size
+            except IndexError:
+                index = 0
             except Exception as exp:
                 logging.error('Data generator error', exp)
+                index = 0
 
             yield last_batch_x, last_batch_y
