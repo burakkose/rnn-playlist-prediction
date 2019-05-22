@@ -1,6 +1,4 @@
-from model import PlaylistGeneration
+from playlist.models.embedding_model_generator import EmbeddingModelGenerator
+from playlist.tools.data import DatasetMode
 
-if __name__ == '__main__':
-    PlaylistGeneration() \
-        .process() \
-        .evaluate()
+EmbeddingModelGenerator(mode=DatasetMode.big).process().evaluate()
